@@ -2,7 +2,9 @@ package com.example.tawsilatn.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.nfc.NdefMessage;
 import android.os.Bundle;
@@ -59,8 +61,12 @@ public class InformationActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
 
+
         DriverModel driverModel = new DriverModel(Name, Email, Phone);
-        databaseReference.child("MyDriver").push().setValue(driverModel);
+        //use sharedPreferences to get the user id and get his own reservation
+        SharedPreferences sharedPref = getSharedPreferences(Constant.Shared_key, Context.MODE_PRIVATE);
+        String currentUser = sharedPref.getString(Constant.Reservation_Id,"hello");
+        databaseReference.child("MyDriver").child(currentUser).push().setValue(driverModel);
 
         Toast.makeText(getApplicationContext(), Constant.add_Reservation,Toast.LENGTH_LONG).show();
         startActivity(new Intent(getApplicationContext(), TawsilaHomePage.class));

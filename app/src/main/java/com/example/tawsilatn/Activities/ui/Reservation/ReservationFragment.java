@@ -1,6 +1,7 @@
 package com.example.tawsilatn.Activities.ui.Reservation;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tawsilatn.R;
 import com.example.tawsilatn.controllers.DriverViewHolder;
 import com.example.tawsilatn.controllers.MyReservationViewHolder;
+import com.example.tawsilatn.global.Constant;
 import com.example.tawsilatn.models.DriverModel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -39,7 +41,6 @@ public class ReservationFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
         getRecycleViewItem();
         adapter.startListening();
         recyclerView.setAdapter(adapter);
@@ -49,7 +50,8 @@ public class ReservationFragment extends Fragment {
     private void getRecycleViewItem() {
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("MyDriver");
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("MyDriver").child(Constant.Reservation_Id);
 
         //setting the request from firebase with our model
 

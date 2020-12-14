@@ -17,6 +17,8 @@ public class Constant {
     public final static String Shared_key = "True";
     public final static String key_shared_Email = "Email";
     public final static String key_shared_password = "Password";
+    public final static String key_shared_cin = "Cin";
+    public static String Reservation_Id = "";
     public final static String key_shared_Name = "name";
     public static ArrayList<DriverModel> list;
     public final static String add_Reservation = "the driver will call you soon he get all places";

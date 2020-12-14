@@ -142,6 +142,14 @@ public class TawsilaHomePage extends AppCompatActivity {
                     if (connectedUser.get(i).getUserEmail().equals(currentUser.getEmail())) {
                         System.out.println(connectedUser.get(i).getUserName());
                          navUserName.setText(connectedUser.get(i).getUserName());
+
+                        SharedPreferences sharedPref = getSharedPreferences(Constant.Shared_key, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString(Constant.Reservation_Id,connectedUser.get(i).getUserCin());
+                        editor.apply();
+
+                        Constant.Reservation_Id = connectedUser.get(i).getUserCin();
+
                     }
                 }
             }
