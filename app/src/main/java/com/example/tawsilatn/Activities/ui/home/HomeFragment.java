@@ -31,6 +31,7 @@ RecyclerView recyclerView;
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+        //Setting the recycle view
         recyclerView = root.findViewById(R.id.rcv_List_driver);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);

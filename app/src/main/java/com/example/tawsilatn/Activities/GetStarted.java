@@ -20,7 +20,7 @@ public class GetStarted extends AppCompatActivity {
         handler = new Handler();
         getSplach();
     }
-
+//Splach Function
     private void getSplach() {
         handler.postDelayed(new Runnable() {
             @Override

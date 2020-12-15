@@ -12,13 +12,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.tawsilatn.R;
-import com.example.tawsilatn.global.Constant;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import com.example.tawsilatn.R;
+import com.example.tawsilatn.global.Constant;
 public class LoginPage extends AppCompatActivity {
 EditText edt_UserEmail , edt_UserPassword;
 Button btn_Connect , btn_Register;
@@ -84,20 +84,22 @@ Button btn_Connect , btn_Register;
 
                     } else {
 
-                        SharedPreferences sharedPref = getSharedPreferences(Constant.Shared_key, Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPref.edit();
-                        editor.putBoolean(Constant.Key_shared_Connected,true);
-                        editor.putString(Constant.key_shared_Email,userEmail);
-                        editor.putString(Constant.key_shared_password,userPassword);
-                        editor.apply();
-                        Intent intent = new Intent(getApplicationContext(), TawsilaHomePage.class);
-                        startActivity(intent);
-                        finish();
+                        sendToSharedPreferences();
                     }
                 }
             });
         }
 
+    }
+
+    private void sendToSharedPreferences() {
+        SharedPreferences sharedPref = getSharedPreferences(Constant.Shared_key, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean(Constant.Key_shared_Connected,true);
+        editor.apply();
+        Intent intent = new Intent(getApplicationContext(), TawsilaHomePage.class);
+        startActivity(intent);
+        finish();
     }
 
 
