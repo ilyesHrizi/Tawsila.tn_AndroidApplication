@@ -20,8 +20,8 @@
         app:srcCompat="@drawable/tawsila_logo" />
 
     <TextView
-        android:layout_width="355dp"
-        android:layout_height="97dp"
+        android:layout_width="312dp"
+        android:layout_height="92dp"
         android:layout_marginBottom="4dp"
         android:fontFamily="serif-monospace"
         android:text="Best way to travel in tunisia "
